@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 venv="nephoria_venv"
 neph_branch="oldboto"
 adminapi_branch="master"
