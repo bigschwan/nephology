@@ -3,7 +3,9 @@ set -x
 venv="nephoria_venv"
 neph_branch="oldboto"
 adminapi_branch="master"
-yum install -y python-devel gcc git python-setuptools python-virtualenv
+yum install --disablerepo=euca-build-deps -y python-devel gcc git python-setuptools python-virtualenv
+rpm -qa | grep virtualenv # verify it was installed successfully above
+yum repolist # check repos
 if [ ! -d adminapi ]; then
     git clone https://github.com/nephomaniac/adminapi.git
 fi
@@ -12,7 +14,7 @@ if [ ! -d nephoria ]; then
 fi
 if [ "x$venv" != "x" ]; then
     if [ ! -d $venv ]; then
-        virtualenv $venv
+        /usr/bin/virtualenv $venv
     fi
     source $venv/bin/activate
 fi
