@@ -112,6 +112,13 @@ class UserContext(AutoCreds):
         self.log.identifier = str(self)
         self.log.debug('Successfully created User Context')
 
+        self.test_user_resources = \
+            {
+                '_instances': [],
+                '_volumes': [],
+                '_bucket': []
+            }
+
     ##########################################################################################
     #   User/Account Properties, Attributes, Methods, etc..
     ##########################################################################################
@@ -458,12 +465,3 @@ class UserContext(AutoCreds):
                 for account_name in self.test_resources["iam_accounts"]:
                     self.iam.delete_account(account_name=account_name, recursive=True)
             except: pass
-
-
-
-
-
-
-
-
-
