@@ -18,7 +18,7 @@ class TestController(object):
     def __init__(self,
                  hostname=None, username='root', password=None, keypath=None, region=None,
                  proxy_hostname=None, proxy_password=None,
-                 clouduser_account='nephotest', clouduser_name='sys_admin', clouduser_credpath=None,
+                 clouduser_account='nephotest', clouduser_name='admin', clouduser_credpath=None,
                  clouduser_accesskey=None, clouduser_secretkey=None,
                  cloudadmin_credpath=None, cloudadmin_accesskey=None, cloudadmin_secretkey=None,
                  timeout=10, log_level='DEBUG', environment_file=None, https=True,
