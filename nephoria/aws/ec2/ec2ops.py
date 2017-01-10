@@ -749,6 +749,13 @@ disable_root: false"""
             )
 
     def revoke_all_rules(self, group, egress=False):
+        """
+        Attempts to revoke/remove all rules from the provided group.
+        Args:
+            group: security group or id
+            egress: boolean, if True will attempt to remove all egress rules in addition to ingress
+
+        """
 
         if isinstance(group, SecurityGroup):
             # fetch it since group obj does not have update() yet...
