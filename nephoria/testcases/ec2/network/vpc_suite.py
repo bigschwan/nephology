@@ -688,6 +688,36 @@ class VpcSuite(CliTestRunner):
                     exclude_instances.append(i)
                 else:
                     exclude_instances.append(i.id)
+        def check_connections(vms):
+            if not auto_connect:
+                self.log.debug('Not checking VM connections, auto_connect={0}'
+                               .format(auto_connect))
+                return
+            ipt = user.ec2.show_instances(vms, printme=False)
+            self.status('Checking connections for the following instances...\n{0}\n'.format(ipt))
+            for vm in vms:
+                if not vm.ip_address:
+                    self.log.debug('Attempting to allocate and assoc a public addr for VM:{0}'
+                                   .format(vm))
+                    addr = user.ec2.allocate_address()
+                    addr.associate(vm.id)
+                    start = time.time()
+                    elapsed = 0
+                    timeout = 60
+                    good = False
+                    while not good and (elapsed < timeout):
+                        elapsed = int(time.time() - start)
+                        try:
+                            vm.connect_to_instance()
+                            good = True
+                            break
+                        except Exception as E:
+                            self.log.error('{0}\nError while attempting to connect to vm:{1}, '
+                                           'elapsed:{2}, err:{3}'.format(get_traceback(), vm.id,
+                                                                         elapsed, E))
+                            if elapsed > timeout:
+                                raise E
+
         count = int(count or 0)
         filters = {'tag-key': self.test_name, 'tag-value': self.test_id}
         filters['availability-zone'] = zone
@@ -731,14 +761,24 @@ class VpcSuite(CliTestRunner):
             instance.auto_connect = auto_connect
         if not count:
             if monitor_to_running:
-                return user.ec2.monitor_euinstances_to_running(instances, timeout=timeout)
+                instances = user.ec2.monitor_euinstances_to_running(instances, timeout=timeout)
+            ipt = user.ec2.show_instances(instances, printme=False)
+            self.status('Returning the following instances...\n{0}\n'.format(ipt))
+            # Make sure these VMs have active connections...
+            check_connections(instances)
             return instances
         if len(instances) >= count:
             instances = instances[0:count]
+            # Make sure these VMs have active connections...
+            check_connections(instances)
             if monitor_to_running:
                 return user.ec2.monitor_euinstances_to_running(instances, timeout=timeout)
+            ipt = user.ec2.show_instances(instances, printme=False)
+            self.status('Returning the following instances...\n{0}\n'.format(ipt))
             return instances
         else:
+            # Make sure these VMs have active connections...
+            check_connections(instances)
             needed = count - len(instances)
             if vpc_id and not subnet_id:
                 vpc_filters = {'vpc-id':vpc_id}
@@ -759,6 +799,8 @@ class VpcSuite(CliTestRunner):
             if len(instances) != count:
                 raise RuntimeError('Less than the desired:{0} number of instances returned?'
                                    .format(count))
+            ipt = user.ec2.show_instances(instances, printme=False)
+            self.status('Returning the following instances...\n{0}\n'.format(ipt))
             return instances
 
     @printinfo
@@ -5300,9 +5342,9 @@ class VpcSuite(CliTestRunner):
                 eni2, eni2b = self.get_test_enis_for_subnet(subnet=subnet2, user=user,
                                                      apply_groups=group2, count=2)
                 status('Creating VM in zone:{0} for this test...'.format(zone))
-                vm1, vm2 = self.get_test_instances(zone=zone, group_id=primary_group.id, vpc_id=vpc.id,
-                                              subnet_id=primary_sub.id, instance_type='m1.small',
-                                              count=2)
+                vm1, vm2 = self.get_test_instances(zone=zone, group_id=primary_group.id,
+                                                   vpc_id=vpc.id, subnet_id=primary_sub.id,
+                                                   instance_type='m1.small', count=2)
                 for eni in [eni1b, eni2b]:
                     vm2.attach_eni(eni)
                     user.ec2.modify_network_interface_attributes(eni, source_dest_check=False)
