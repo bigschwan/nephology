@@ -708,7 +708,11 @@ class VpcSuite(CliTestRunner):
                     while not good and (elapsed < timeout):
                         elapsed = int(time.time() - start)
                         try:
+                            if not vm.keypair:
+                                vm.keypair = self.get_keypair(user)
                             vm.connect_to_instance()
+                            if not vm.ssh:
+                                vm.keypath = None
                             good = True
                             break
                         except Exception as E:
