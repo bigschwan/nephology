@@ -2702,13 +2702,14 @@ class EuInstance(Instance, TaggedResource, Machine):
         while elapsed < local_dev_timeout and dev_found:
             elapsed = int(time.time() - start)
             attempts += 1
+            dev = None
+            info = None
             net_devs = self.get_network_device_info()
             for dev, info in net_devs.iteritems():
                 if info.get('address') == eni.mac_address:
                     break
                 else:
                     dev = None
-
             if not dev:
                 eth_info = ", ".join(["{0}:{1}"
                                      .format(x, y.get('address')) for x, y in net_devs.iteritems()])
