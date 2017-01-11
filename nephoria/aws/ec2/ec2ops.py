@@ -1143,12 +1143,51 @@ disable_root: false"""
                     self.connection.delete_route_table(route_table_id=rtb.id)
         if deps['enis']:
             self.log.debug('Attempting to delete vpc enis')
-            for eni in deps['enis']:
-                eni.delete()
+            enis = deps['enis'] or []
+            self.delete_enis(enis)
         self.log.debug('Attempting to delete subnet:{0}'.format(subnet))
         self.connection.delete_subnet(subnet)
         self.log.debug('Deleted SUBNET and dependency artifacts')
 
+
+    def delete_enis(self, enis, timeout=90):
+        delete_list = []
+        if not isinstance(enis, list):
+            enis = [enis]
+        for eni in enis:
+            if isinstance(eni, basestring):
+                delete_list.append(eni)
+            else:
+                delete_list.append(eni.id)
+        start = time.time()
+        elapsed = 0
+        good = []
+        while (elapsed < timeout) and len(delete_list) != len(good):
+            elapsed = int(time.time() - start)
+            for eni in delete_list:
+                self.connection.delete_network_interface(eni)
+                try:
+                    eniobj = self.connection.get_all_network_interfaces(eni)
+                    if eniobj.status == 'deleted':
+                        self.log.debug('ENI:{0} is properly deleted, after elapsed:{1}'
+                                       .format(eni, elapsed))
+                        good.append(eni)
+                    else:
+                        self.log.debug('eni:{0}:{1} not deleted after elapsed:{2}'
+                                       .format(self, eniobj.id, eniobj.status, elapsed))
+                except EC2ResponseError as E:
+                    if E.status == 400 and E.reason == 'InvalidNetworkInterfaceID.NotFound':
+                        self.log.debug('ENI:{0} is properly deleted, after elapsed:{1}'
+                                       .format(eni, elapsed))
+                        good.append(eni)
+            if len(delete_list) != len(good):
+                time.sleep(5)
+        if len(delete_list) != len(good):
+            errmsg = "Failed to delete the following ENIs after elapsed:{0}:".format(elapsed)
+            for eni in delete_list:
+                if eni not in good:
+                    errmsg += ' {0},'.format(eni)
+            raise RuntimeError(errmsg)
 
 
     def get_vpc_dependency_artifacts(self, vpc):

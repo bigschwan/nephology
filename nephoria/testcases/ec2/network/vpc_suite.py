@@ -717,6 +717,7 @@ class VpcSuite(CliTestRunner):
                                                                          elapsed, E))
                             if elapsed > timeout:
                                 raise E
+                            time.sleep(5)
 
         count = int(count or 0)
         filters = {'tag-key': self.test_name, 'tag-value': self.test_id}
