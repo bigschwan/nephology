@@ -701,27 +701,29 @@ class VpcSuite(CliTestRunner):
                                    .format(vm))
                     addr = user.ec2.allocate_address()
                     addr.associate(vm.id)
-                    start = time.time()
-                    elapsed = 0
-                    timeout = 60
-                    good = False
-                    while not good and (elapsed < timeout):
-                        elapsed = int(time.time() - start)
-                        try:
-                            if not vm.keypair:
-                                vm.keypair = self.get_keypair(user)
-                            vm.connect_to_instance()
-                            if not vm.ssh:
-                                vm.keypath = None
-                            good = True
-                            break
-                        except Exception as E:
-                            self.log.error('{0}\nError while attempting to connect to vm:{1}, '
-                                           'elapsed:{2}, err:{3}'.format(get_traceback(), vm.id,
-                                                                         elapsed, E))
-                            if elapsed > timeout:
-                                raise E
-                            time.sleep(5)
+                start = time.time()
+                elapsed = 0
+                timeout = 60
+                good = False
+                while not good and (elapsed < timeout):
+                    elapsed = int(time.time() - start)
+                    try:
+                        if not vm.keypair:
+                            vm.keypair = self.get_keypair(user)
+                        self.log.debug('Attepting to refresh ssh connection to:{0}, ip:{1}'.
+                                       format(vm.id, vm.ip_address))
+                        vm.connect_to_instance()
+                        if not vm.ssh:
+                            vm.keypath = None
+                        good = True
+                        break
+                    except Exception as E:
+                        self.log.error('{0}\nError while attempting to connect to vm:{1}, '
+                                       'elapsed:{2}, err:{3}'.format(get_traceback(), vm.id,
+                                                                     elapsed, E))
+                        if elapsed > timeout:
+                            raise E
+                        time.sleep(5)
 
         count = int(count or 0)
         filters = {'tag-key': self.test_name, 'tag-value': self.test_id}
