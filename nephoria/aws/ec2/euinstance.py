@@ -343,6 +343,8 @@ class EuInstance(Instance, TaggedResource, Machine):
         # Create a multi line field for the instance's state info
         if self.age:
             age = int(self.age)
+        else:
+            age = "??"
         state_string, state_len = multi_line(["STATE: " + state_markup(self.laststate),
                                               "{0} {1}".format(markup('AGE:'), age),
                                               "{0} {1}".format(markup("ZONE:"), self.placement),
