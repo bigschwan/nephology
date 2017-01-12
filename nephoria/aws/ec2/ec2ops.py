@@ -1165,8 +1165,8 @@ disable_root: false"""
         while (elapsed < timeout) and len(delete_list) != len(good):
             elapsed = int(time.time() - start)
             for eni in delete_list:
-                self.connection.delete_network_interface(eni)
                 try:
+                    self.connection.delete_network_interface(eni)
                     eniobj = self.connection.get_all_network_interfaces(eni)
                     if eniobj.status == 'deleted':
                         self.log.debug('ENI:{0} is properly deleted, after elapsed:{1}'
@@ -1176,7 +1176,7 @@ disable_root: false"""
                         self.log.debug('eni:{0}:{1} not deleted after elapsed:{2}'
                                        .format(self, eniobj.id, eniobj.status, elapsed))
                 except EC2ResponseError as E:
-                    if E.status == 400:
+                    if int(E.status) == 400:
                         if E.reason == 'InvalidNetworkInterfaceID.NotFound':
                             self.log.debug('ENI:{0} is properly deleted, after elapsed:{1}'
                                            .format(eni, elapsed))
@@ -1184,6 +1184,9 @@ disable_root: false"""
                         if E.reason == 'InvalidNetworkInterface.InUse':
                             self.log.warning('ENI:{0} not deleted, ENI still in-use, '
                                              'after elapsed:{1}'.format(eni, elapsed))
+                    else:
+                        self.log.error('Unexpected ec2 response error:{0}'.format(E))
+                        raise E
 
             if len(delete_list) != len(good):
                 time.sleep(5)

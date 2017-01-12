@@ -5954,6 +5954,7 @@ class VpcSuite(CliTestRunner):
                     raise ValueError('Test did not create the correct number of '
                                      'NATGWs:{0} != prop:{1} for zone:{2}'.format(x, limit, zone))
                 gws = user.ec2.get_nat_gateways(state='available', zone=zone)
+                user.ec2.show_nat_gateways(gws)
                 if len(gws) != limit:
                     raise ValueError('Fetched GWs {0} != limit set by property:{1}'
                                      .format(len(gws), limit))
