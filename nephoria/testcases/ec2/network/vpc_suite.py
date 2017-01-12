@@ -5553,6 +5553,7 @@ class VpcSuite(CliTestRunner):
                                                         desired_state='failed',
                                                         failed_states=['available', 'deleting',
                                                                        'deleted'])
+                    user.ec2.show_nat_gateways([natgw])
                     if natgw:
                         if not 'FailureMessage' in natgw:
                             errmsg = red('NatGW failed with dup EIP but did not contain '

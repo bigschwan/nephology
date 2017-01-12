@@ -1176,10 +1176,15 @@ disable_root: false"""
                         self.log.debug('eni:{0}:{1} not deleted after elapsed:{2}'
                                        .format(self, eniobj.id, eniobj.status, elapsed))
                 except EC2ResponseError as E:
-                    if E.status == 400 and E.reason == 'InvalidNetworkInterfaceID.NotFound':
-                        self.log.debug('ENI:{0} is properly deleted, after elapsed:{1}'
-                                       .format(eni, elapsed))
-                        good.append(eni)
+                    if E.status == 400:
+                        if E.reason == 'InvalidNetworkInterfaceID.NotFound':
+                            self.log.debug('ENI:{0} is properly deleted, after elapsed:{1}'
+                                           .format(eni, elapsed))
+                            good.append(eni)
+                        if E.reason == 'InvalidNetworkInterface.InUse':
+                            self.log.warning('ENI:{0} not deleted, ENI still in-use, '
+                                             'after elapsed:{1}'.format(eni, elapsed))
+
             if len(delete_list) != len(good):
                 time.sleep(5)
         if len(delete_list) != len(good):
@@ -5056,6 +5061,9 @@ disable_root: false"""
                                 failed[gw_id] = str(E)
                         else:
                             if in_desired_state(gw):
+                                self.log.debug('NATGW:{0}:{1} now in a desired state:{2}, '
+                                               'removing from monitor'
+                                               .format(gw_id, gw.get('State'), desired_states))
                                 checklist.remove(gw_id)
                             elif in_failed_state(gw):
                                 checklist.remove(gw_id)
