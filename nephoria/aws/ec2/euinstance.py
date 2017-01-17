@@ -2336,8 +2336,8 @@ class EuInstance(Instance, TaggedResource, Machine):
                     # Get the operation state...
                     oper_path = os.path.join(dev_path, 'operstate')
                     try:
-                        dev['operstate'] = self.sys('cat {0}'.format(oper_path), code=0,
-                                                    timeout=2)[0]
+                        dev['operstate'] = (self.sys('cat {0}'.format(oper_path), code=0,
+                                                     timeout=2) or [''])[0]
                     except (CommandTimeoutException, CommandExitCodeException) as TE:
                         self.log.debug(TE)
                         dev['operstate'] = None
