@@ -170,13 +170,13 @@ class VpcSuite(CliTestRunner):
     def my_tag_name(self):
         return '{0}_CREATED_TESTID'.format(self.__class__.__name__)
 
-    def store_group(self, user, group):
-        if user in self._test_groups:
-            self._test_groups[user].add(group)
+    def store_addr(self, user, addr):
+        if user in self._test_addrs:
+            self._test_addrs[user].add(addr)
         else:
-            self._test_groups[user] = set()
-            self._test_groups.add(group)
-        return self._test_groups
+            self._test_addrs[user] = set()
+            self._test_addrs.add(addr)
+        return self._test_addrs
 
     def modify_vm_type_store_orig(self, vmtype, cpu=None, disk=None, memory=None,
                                   network_interfaces=None):
@@ -323,7 +323,6 @@ class VpcSuite(CliTestRunner):
             group_name = "{0}_group".format(self.__class__.__name__)
             group = self.user.ec2.add_group(group_name)
             self._security_groups[group.vpc_id].append(group)
-            self.store_group(self.user, group)
             self.user.ec2.authorize_group(group, port=22, protocol='tcp')
             self.user.ec2.authorize_group(group,  protocol='icmp', port=-1)
             self.user.ec2.show_security_group(group)
