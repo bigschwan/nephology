@@ -2312,7 +2312,8 @@ class EuInstance(Instance, TaggedResource, Machine):
 
                     # Get MAC address...
                     mac_path = os.path.join(dev_path, 'address')
-                    mac_addr = self.sys('cat {0}'.format(mac_path), code=0)[0]
+                    mac_addr = self.sys('cat {0}'.format(mac_path), code=0) or [""]
+                    mac_addr = mac_addr[0]
                     search = re.search("^\w\w:\w\w:\w\w:\w\w:\w\w:\w\w$", mac_addr.strip())
                     if search:
                         dev['address'] = search.group()
