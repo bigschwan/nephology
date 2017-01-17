@@ -170,13 +170,13 @@ class VpcSuite(CliTestRunner):
     def my_tag_name(self):
         return '{0}_CREATED_TESTID'.format(self.__class__.__name__)
 
-    def store_addrs(self, user, addr):
-        if user in self._test_addrs:
-            self._test_addrs[user].add(addr)
+    def store_group(self, user, group):
+        if user in self._test_groups:
+            self._test_groups[user].add(group)
         else:
-            self._test_addrs[user] = set()
-            self._test_addrs.add(addr)
-        return self._test_addrs
+            self._test_groups[user] = set()
+            self._test_groups.add(group)
+        return self._test_groups
 
     def modify_vm_type_store_orig(self, vmtype, cpu=None, disk=None, memory=None,
                                   network_interfaces=None):
@@ -322,6 +322,8 @@ class VpcSuite(CliTestRunner):
         if not group:
             group_name = "{0}_group".format(self.__class__.__name__)
             group = self.user.ec2.add_group(group_name)
+            self._security_groups[group.vpc_id].append(group)
+            self.store_group(self.user, group)
             self.user.ec2.authorize_group(group, port=22, protocol='tcp')
             self.user.ec2.authorize_group(group,  protocol='icmp', port=-1)
             self.user.ec2.show_security_group(group)
@@ -709,7 +711,7 @@ class VpcSuite(CliTestRunner):
                     self.log.debug('Attempting to allocate and assoc a public addr for VM:{0}'
                                    .format(vm))
                     addr = user.ec2.allocate_address()
-                    self.store_addrs(user, addr)
+                    self.store_addr(user, addr)
                     addr.associate(vm.id)
                 start = time.time()
                 elapsed = 0
@@ -3951,7 +3953,7 @@ class VpcSuite(CliTestRunner):
                 eni1, eni2, eni3 = self.get_test_enis_for_subnet(subnet=subnet, user=user, count=3)
                 user.ec2.modify_network_interface_attributes(eni1, group_set=[group])
                 eip = user.ec2.allocate_address()
-                self.store_addrs(user, eip)
+                self.store_addr(user, eip)
                 self.log.debug('Using EIP:{0}'.format(eip))
                 eip.associate(network_interface_id=eni1.id)
                 self.log.debug('Creating ENI collection containing 3 test ENIs...')
@@ -4013,7 +4015,7 @@ class VpcSuite(CliTestRunner):
                 eni1, eni2, eni3 = self.get_test_enis_for_subnet(subnet=subnet, user=user, count=3)
                 user.ec2.modify_network_interface_attributes(eni1, group_set=[group])
                 eip = user.ec2.allocate_address()
-                self.store_addrs(user, eip)
+                self.store_addr(user, eip)
                 eip.associate(network_interface_id=eni1.id)
                 eni_collection = user.ec2.create_network_interface_collection(eni=eni1,
                                                                               subnet_id=subnet,
@@ -4075,7 +4077,7 @@ class VpcSuite(CliTestRunner):
                 eni1 =enis[0]
                 user.ec2.modify_network_interface_attributes(eni1, group_set=[group])
                 eip = user.ec2.allocate_address()
-                self.store_addrs(user, eip)
+                self.store_addr(user, eip)
                 eip.associate(network_interface_id=eni1.id)
                 eni_collection = user.ec2.create_network_interface_collection(eni=eni1,
                                                                               subnet_id=subnet,
@@ -4179,9 +4181,9 @@ class VpcSuite(CliTestRunner):
                 subnets.append(subnet)
                 eni = self.get_test_enis_for_subnet(subnet=subnet, user=user, count=1)[0]
                 eip1 = user.ec2.allocate_address()
-                self.store_addrs(user, eip1)
+                self.store_addr(user, eip1)
                 eip2 = user.ec2.allocate_address()
-                self.store_addrs(user, eip2)
+                self.store_addr(user, eip2)
                 eip1.associate(network_interface_id=eni.id)
                 user.ec2.modify_network_interface_attributes(eni, group_set=[group])
                 eni_collection = user.ec2.create_network_interface_collection(eni=eni,
@@ -5465,7 +5467,7 @@ class VpcSuite(CliTestRunner):
                 subnet = self.create_test_subnets(vpc=vpc, zones=[zone], user=user)[0]
                 subnets.append(subnet)
                 eip = user.ec2.allocate_address()
-                self.store_addrs(user, eip)
+                self.store_addr(user, eip)
                 eips.append(eip)
                 self.status('Creating the NATGW with EIP:{0}'.format(eip.public_ip))
                 natgw = user.ec2.create_nat_gateway(subnet, eip_allocation=eip.allocation_id)
@@ -5555,7 +5557,7 @@ class VpcSuite(CliTestRunner):
                 subnet = self.create_test_subnets(vpc=vpc, zones=[zone], user=user)[0]
                 subnets.append(subnet)
                 eip = user.ec2.allocate_address()
-                self.store_addrs(user, eip)
+                self.store_addr(user, eip)
                 eips.append(eip)
                 self.status('Creating the NATGW with EIP:{0}'.format(eip.public_ip))
                 natgw = user.ec2.create_nat_gateway(subnet, eip_allocation=eip.allocation_id)
@@ -5749,7 +5751,7 @@ class VpcSuite(CliTestRunner):
                     raise RuntimeError('Failed to created route to host:{0} via "{1}"'
                                        .format('0.0.0.0/0', igw.id))
                 eip = user.ec2.allocate_address()
-                self.store_addrs(user, eip)
+                self.store_addr(user, eip)
                 eips.append(eip)
                 self.status('Creating the NATGW with EIP:{0}'.format(eip.public_ip))
                 natgw = user.ec2.create_nat_gateway(subnet, eip_allocation=eip.allocation_id)
@@ -5959,7 +5961,7 @@ class VpcSuite(CliTestRunner):
 
                 for x in xrange(1, limit + 1):
                     eip = user.ec2.allocate_address()
-                    self.store_addrs(user, eip)
+                    self.store_addr(user, eip)
                     eips.append(eip)
                     self.status('Creating the NATGW with EIP:{0}'.format(eip.public_ip))
                     natgw = user.ec2.create_nat_gateway(subnet, eip_allocation=eip.allocation_id,
@@ -5983,7 +5985,7 @@ class VpcSuite(CliTestRunner):
                 self.status('Attempting to exceed property value natgw limit...')
                 try:
                     eip = user.ec2.allocate_address()
-                    self.store_addrs(user, eip)
+                    self.store_addr(user, eip)
                     eips.append(eip)
                     self.status('Creating the NATGW with EIP:{0}'.format(eip.public_ip))
                     natgw = user.ec2.create_nat_gateway(subnet, eip_allocation=eip.allocation_id)
@@ -6009,7 +6011,7 @@ class VpcSuite(CliTestRunner):
                     user.ec2.delete_nat_gateways(gw)
                     time.sleep(2)
                     eip = user.ec2.allocate_address()
-                    self.store_addrs(user, eip)
+                    self.store_addr(user, eip)
                     eips.append(eip)
                     self.status('Creating the NATGW with EIP:{0}'.format(eip.public_ip))
                     natgw = user.ec2.create_nat_gateway(subnet, eip_allocation=eip.allocation_id)
@@ -6154,17 +6156,35 @@ class VpcSuite(CliTestRunner):
                     self.log.error(red("{0}\nError#{1} during ephemeral user clean up:{2}"
                                    .format(get_traceback(), len(errors), E)))
                     errors.append('clean_method error#{0}, ERR:"{1}"'.format(len(errors), E))
-            # Delete any stored addresses 
+            # Delete any stored addresses
             if self._test_addrs:
                 for user, addrs in self._test_addrs.iteritems():
                     for addr in addrs:
                         try:
                             addr.delete()
                         except Exception as E:
-                            self.log.error(red("{0}\nError#{1} during address clean up:{2}"
+                            if isinstance(E, EC2ResponseError) and E.status == 400 and \
+                                            E.reason == 'InvalidAddressID.NotFound':
+                                self.log.debug('Ignoring Error during addr delete:"{0}"'.format(E))
+                            else:
+                                self.log.error(red("{0}\nError#{1} during address clean up:{2}"
+                                                   .format(get_traceback(), len(errors), E)))
+                                errors.append('clean_method error#{0}, ERR:"{1}"'
+                                              .format(len(errors), E))
+            for groups in self._security_groups.itervalues():
+                for group in groups:
+                    try:
+                        group.delete()
+                    except Exception as E:
+                        if isinstance(E, EC2ResponseError) and E.status == 400 and \
+                                        E.reason == 'InvalidGroup.NotFound':
+                            self.log.debug('Ignoring Error during group delete:"{0}"'.format(E))
+                        else:
+                            self.log.error(red("{0}\nError#{1} during group clean up:{2}"
                                                .format(get_traceback(), len(errors), E)))
                             errors.append('clean_method error#{0}, ERR:"{1}"'
                                           .format(len(errors), E))
+
             if errors:
                 self.log.error(red("{0} Number of Errors During Cleanup:\n{1}"
                                .format(len(errors), "\n".join(str(x) for x in errors))))
