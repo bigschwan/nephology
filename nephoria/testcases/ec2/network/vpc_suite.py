@@ -175,7 +175,7 @@ class VpcSuite(CliTestRunner):
             self._test_addrs[user].add(addr)
         else:
             self._test_addrs[user] = set()
-            self._test_addrs.add(addr)
+            self._test_addrs[user].add(addr)
         return self._test_addrs
 
     def modify_vm_type_store_orig(self, vmtype, cpu=None, disk=None, memory=None,

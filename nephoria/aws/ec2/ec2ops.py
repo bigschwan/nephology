@@ -1162,7 +1162,7 @@ disable_root: false"""
         start = time.time()
         elapsed = 0
         good = []
-        while (elapsed < timeout) and len(delete_list) != len(good):
+        while (elapsed < timeout) and delete_list:
             elapsed = int(time.time() - start)
             for eni in delete_list:
                 try:
@@ -1187,14 +1187,19 @@ disable_root: false"""
                     else:
                         self.log.error('Unexpected ec2 response error:{0}'.format(E))
                         raise E
-
-            if len(delete_list) != len(good):
+            for eni in good:
+                if eni in delete_list:
+                    delete_list.remove(eni)
+            if delete_list:
+                dt = self.show_network_interfaces(enis=delete_list, printme=False)
+                self.log.debug('Elapsed:{0} Delete waiting and/or retrying the following '
+                               'ENIS:\n{0}\n'.format(elapsed, dt))
                 time.sleep(5)
-        if len(delete_list) != len(good):
+        if delete_list:
+            self.show_network_interfaces(enis=delete_list, printmethod=self.log.error)
             errmsg = "Failed to delete the following ENIs after elapsed:{0}:".format(elapsed)
             for eni in delete_list:
-                if eni not in good:
-                    errmsg += ' {0},'.format(eni)
+                errmsg += ' {0},'.format(eni)
             raise RuntimeError(errmsg)
 
 
@@ -1297,8 +1302,15 @@ disable_root: false"""
             for acl in deps['network_acls']:
                 for assoc in acl.associations:
                     if assoc.subnet_id in subnet_ids:
-                        self.connection.disassociate_network_acl(subnet_id=assoc.subnet_id,
-                                                                 vpc_id=vpc)
+                        # Find out what the default ACL is for the VPC, and associate
+                        # current subnet with the default network ACL
+                        acls = self.connection.get_all_network_acls( filters=[('vpc-id', vpc),
+                                                                              ('default', 'true')])
+                        if acls:
+                            default_acl_id = acls[0].id
+                            self.connection.associate_network_acl(default_acl_id, assoc.subnet_id)
+                        else:
+                            self.log.warning('Could not find default ACL for ')
                 if not acl.default:
                     self.connection.delete_network_acl(network_acl_id=acl.id)
         if deps['security_groups']:
