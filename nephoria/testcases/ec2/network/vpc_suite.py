@@ -4794,6 +4794,7 @@ class VpcSuite(CliTestRunner):
         """
         user = self.user
         vpc = self.test6b0_get_vpc_for_eni_tests()
+        err = ""
         instances = []
         subnets = []
         protocols = []
@@ -5043,6 +5044,8 @@ class VpcSuite(CliTestRunner):
                                                                      protocol,
                                                                      res_dict.get('passed')))
                 except Exception as E:
+                    err = "{0}\nERROR during:'{1}', Error:{2}".format(get_traceback(),
+                                                                      self.last_status_msg, E)
                     err += '\nIN TEST: "{0}"'.format(self.current_test_scenario)
                     self.log.error(red(err))
                     failed_scenarios.append("{0}, ERROR:{1}".format(self.current_test_scenario, E))
