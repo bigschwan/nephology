@@ -1025,7 +1025,7 @@ class LegacyEbsTestSuite(CliTestRunner):
         else:
             return testlist
 
-    def test_consecutive_concurrent(self, run=False, count=5, delay=0, tpg=300, poll_progress=60,
+    def test_consecutive_concurrent(self, run=True, count=5, delay=0, tpg=300, poll_progress=60,
                                     delete_to=120, snap_attached=False):
         testlist = []
         # create 1 volume per zone
