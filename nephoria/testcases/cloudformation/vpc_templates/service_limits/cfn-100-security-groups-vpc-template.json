@@ -1,0 +1,805 @@
+{
+        "AWSTemplateFormatVersion":"2010-09-09",
+        "Description":"Cloudformation Template Description => Test 100 Security Group limit in a VPC",
+        "Resources":{
+               "VpcId": {
+                       "Type": "AWS::EC2::VPC",
+                       "Properties": {
+                                "CidrBlock": "10.0.0.0/16"
+                        }
+                },
+                "SecurityGroup1":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup2":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup3":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup4":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup5":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup6":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup7":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup8":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup9":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup10":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup11":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup12":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup13":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup14":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup15":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup16":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup17":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup18":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup19":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup20":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup21":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup22":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup23":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup24":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup25":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup26":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup27":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup28":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup29":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup30":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup31":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup32":{
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "DependsOn": "VpcId",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup33":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup34":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup35":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup36":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup37":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup38":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup39":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup40":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup41":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup42":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup43":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup44":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup45":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup46":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup47":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup48":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup49":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup50":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup51":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup52":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup53":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup54":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup55":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup56":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup57":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup58":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup59":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup60":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup61":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup62":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup63":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup64":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup65":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup66":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup67":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup68":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup69":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup70":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup71":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup72":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup73":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup74":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup75":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup76":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup77":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup78":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup79":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup80":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup81":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup82":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup83":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup84":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup85":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup86":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup87":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup88":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup89":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup90":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup91":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup92":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup93":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup94":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup95":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup96":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup97":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup98":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                },
+                "SecurityGroup99":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Security Group for 100 Security Groups Per VPC Test",
+                                "VpcId": { "Ref": "VpcId" }
+                        }
+                }
+
+        }
+}

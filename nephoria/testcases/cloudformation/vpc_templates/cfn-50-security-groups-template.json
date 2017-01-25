@@ -1,0 +1,470 @@
+{
+        "AWSTemplateFormatVersion":"2010-09-09",
+        "Description":"Cloudformation Template Description => Create 50 EC2 security groups in a VPC",
+        "Resources":{
+               "VpcId": {
+                       "Type": "AWS::EC2::VPC",
+                       "Properties": {
+                                "CidrBlock": "10.0.0.0/16",
+                                "EnableDnsSupport": "True",
+                                "EnableDnsHostnames": "True",
+                                "Tags": [{
+                                      "Key": "Application",
+                                      "Value": {
+                                            "Ref": "AWS::StackId"
+                                      }
+                                }]
+                        }
+                },
+                "SecurityGroup1":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup2":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup3":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup4":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup5":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup6":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup7":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup8":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup9":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup10":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup11":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup12":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup13":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup14":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup15":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup16":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup17":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup18":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup19":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup20":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup21":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup22":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup23":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup24":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup25":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup26":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup27":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup28":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup29":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup30":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup31":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup32":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup33":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup34":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup35":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup36":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup37":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup38":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup39":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup40":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup41":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup42":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup43":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup44":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup45":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup46":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup47":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup48":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup49":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                },
+                "SecurityGroup50":{
+                        "DependsOn": "VpcId",
+                        "Type":"AWS::EC2::SecurityGroup",
+                        "Properties":{
+                                "GroupDescription":"Cloudformation Group",
+                                "VpcId": { "Ref": "VpcId" },
+                                "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+                        }
+                }
+        }
+}
